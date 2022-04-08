@@ -5,9 +5,6 @@ arr_m = map(int, input().split())
 
 
 def search(arr, key, start, end):
-    # arr = 찾을려고 하는 키 값이 있는 배열, Key = 찾을려고 하는 값
-    # start = 검색 범위의 맨 앞, end = 검색 범위의 맨 뒤. 이진검색을 위해 범위를 정함
-
     if start > end:
         return 0
 
