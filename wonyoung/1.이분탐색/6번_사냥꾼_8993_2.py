@@ -1,5 +1,5 @@
-# 동물 찾는 것을 이분탐색해야할 거 같은데 
-# 좌표를 어떻게 하나
+# 동물의 x좌표 기준으로 사냥꾼의 위치를 이분탐색 한다.
+# 
 import sys
 sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
@@ -19,7 +19,7 @@ for a, b in animals:
       start = mid+1
     else:
       end = mid
-    
+
   if abs(shooters[end]-a) + b <=l or abs(shooters[end-1]-a) + b <=l:
     cnt+=1
 print(cnt)

@@ -1,0 +1,52 @@
+# 원이 들어오는 모양을 괄호로 변환하여 공간 계산
+import sys
+
+sys.stdin = open('input.txt', 'r')
+input = sys.stdin.readline
+
+n = int(input())
+circles = []
+
+for i in range(n):
+  x, r = map(int, input().split())
+  circles.append((x-r, '('))
+  circles.append((x+r, ')'))
+
+circles = sorted(circles, key= lambda x:(x[0], -ord(x[1])))
+
+stack = []
+# 스택에는 좌표, 괄호 모양, 상태값이 들어감
+answer = 1
+for i in range(n*2):
+  position, bracket = circles[i]
+  if len(stack) == 0:
+    stack.append({'pos':position,'bracket':bracket,'status':0})
+    continue
+  
+  # 괄호가 닫히면 status 값을 확인하고 0 이면 +1
+  # 괄호가 닫히면 status 값을 확인하고 1 이면 +2
+  # 괄호가 닫히면 status 값을 확인하고 -1 이면 +1
+  if bracket == ')':
+    if stack[-1]['status'] == 0:
+      answer +=1
+    elif stack[-1]['status'] == 1:
+      answer +=2
+    else:
+      answer +=1
+    stack.pop()
+    if i != n*2-1:
+      if circles[i+1][0] != position:
+        stack[-1]['status'] = -1
+        
+    # 겹치는 원을 확인하고 pop해야하나?
+  else:
+    if stack[-1]['pos'] == position:
+      # 좌표값이 같으면 원이 접해있는 상태
+      stack[-1]['status'] = 1
+      stack.append({'pos':position,'bracket':bracket,'status':0})
+    else:
+      # 좌표값이 같지 않으면 원이접하지 않음
+      # stack[-1]['status'] = -1
+      stack.append({'pos':position,'bracket':bracket,'status':0})
+
+print(answer)
