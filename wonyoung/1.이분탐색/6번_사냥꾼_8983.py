@@ -1,5 +1,6 @@
 # 60점까지 성공
 import sys
+input = sys.stdin.readline
 sys.stdin = open('input.txt', 'r')
 
 m, n, l = map(int ,input().split())
