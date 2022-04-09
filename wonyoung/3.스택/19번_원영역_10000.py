@@ -25,7 +25,6 @@ for i in range(n*2):
   
   # 괄호가 닫히면 status 값을 확인하고 0 이면 +1
   # 괄호가 닫히면 status 값을 확인하고 1 이면 +2
-  # 괄호가 닫히면 status 값을 확인하고 -1 이면 +1
   if bracket == ')':
     if stack[-1]['status'] == 0:
       answer +=1
@@ -34,9 +33,10 @@ for i in range(n*2):
     else:
       answer +=1
     stack.pop()
+    # 원이 이어져 있는지 확인
     if i != n*2-1:
       if circles[i+1][0] != position:
-        stack[-1]['status'] = -1
+        stack[-1]['status'] = 0
         
     # 겹치는 원을 확인하고 pop해야하나?
   else:
@@ -46,7 +46,6 @@ for i in range(n*2):
       stack.append({'pos':position,'bracket':bracket,'status':0})
     else:
       # 좌표값이 같지 않으면 원이접하지 않음
-      # stack[-1]['status'] = -1
       stack.append({'pos':position,'bracket':bracket,'status':0})
 
 print(answer)
