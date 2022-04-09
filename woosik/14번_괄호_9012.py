@@ -17,3 +17,4 @@ for _ in range(num):
         print('NO')
     elif sum == 0:
         print("YES")
+        
