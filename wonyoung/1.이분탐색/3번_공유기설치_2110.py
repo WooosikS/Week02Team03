@@ -22,7 +22,6 @@ while start <= end:
   if cnt >=c:
     start = mid +1
     result = mid
+    print(mid)
   else:
     end = mid-1
-print(mid)
-print(result)
