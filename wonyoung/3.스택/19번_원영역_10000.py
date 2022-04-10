@@ -7,11 +7,13 @@ input = sys.stdin.readline
 n = int(input())
 circles = []
 
+# 원의 왼쪽은 '(' 모양의 괄호 오른쪽은 ')' 모양의 괄호로 만든다.
 for i in range(n):
   x, r = map(int, input().split())
   circles.append((x-r, '('))
   circles.append((x+r, ')'))
 
+# 좌표기준으로 오름 차순으로 정렬하되 좌표가 같으면 ')'모양이 앞에 오게 정렬한다.
 circles = sorted(circles, key= lambda x:(x[0], -ord(x[1])))
 
 stack = []
@@ -37,8 +39,6 @@ for i in range(n*2):
     if i != n*2-1:
       if circles[i+1][0] != position:
         stack[-1]['status'] = 0
-        
-    # 겹치는 원을 확인하고 pop해야하나?
   else:
     if stack[-1]['pos'] == position:
       # 좌표값이 같으면 원이 접해있는 상태
