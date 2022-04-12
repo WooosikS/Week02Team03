@@ -1,6 +1,7 @@
 import heapq
 import sys
 
+
 left, right = [], []
 n = int(sys.stdin.readline())
 for _ in range(n):
